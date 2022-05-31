@@ -9,7 +9,10 @@ services:
     env_file:
       - ./.env
   web:
-    build: ../api_yamdb/
+    image: nastyavertal/yamdb_final:latest
+    build:
+      context: ../
+      dockerfile: ./api_yamdb/Dockerfile
     restart: always
     volumes:
       - static_value:/app/static/
