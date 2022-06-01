@@ -43,6 +43,7 @@ jobs:
         # Пуш образа в Docker Hub
         uses: docker/build-push-action@v2
         with:
+          no-cache: true
           context: ./api_yamdb
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/yamdb_final:latest
@@ -60,7 +61,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             # для обновления образа
-            sudo docker pull nastyavertal/yamdb_final:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb_final:latest
             sudo docker-compose stop
             sudo docker-compose rm web
             touch .env
