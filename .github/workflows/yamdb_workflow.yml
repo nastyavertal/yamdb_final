@@ -10,7 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
-
       uses: actions/setup-python@v2
       with:
         python-version: 3.7
@@ -60,6 +59,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
+            # для обновления образа
+            sudo docker pull nastyavertal/yamdb_final:latest
             sudo docker-compose stop
             sudo docker-compose rm web
             touch .env
@@ -70,7 +71,12 @@ jobs:
             echo DB_HOST=${{ secrets.DB_HOST }} >> .env
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
             sudo docker-compose up -d
-# дописать команды
+            sudo docker-compose exec -T web python manage.py makemigrations --noinput
+            sudo docker-compose exec -T web python manage.py migrate --noinput
+            docker-compose exec web python manage.py createsuperuser
+            sudo docker-compose exec -T web python manage.py collectstatic --no-input
+
+  # дописать команды
 
   send_message:
     runs-on: ubuntu-latest
