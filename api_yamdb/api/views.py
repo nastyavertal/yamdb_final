@@ -14,9 +14,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
-from reviews.models import Category, Genre, Review, Title
 
 from api_yamdb.settings import EMAIL_HOST
+from reviews.models import Category, Genre, Review, Title
 
 from .filters import TitleFilter
 from .permissions import (IsAdmin, IsAdminOrReadOnly,

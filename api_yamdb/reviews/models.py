@@ -1,8 +1,9 @@
-from core.models import ClassificationModel, FeedbackModel
-from core.validators import validate_username, validate_year
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+
+from core.models import ClassificationModel, FeedbackModel
+from core.validators import validate_username, validate_year
 
 
 class User(AbstractUser):
