@@ -17,6 +17,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from api_yamdb.settings import EMAIL_HOST
 from reviews.models import Category, Genre, Review, Title
+
 from .filters import TitleFilter
 from .permissions import (
     IsAdmin, IsAdminOrReadOnly, IsOwnerModeratorAdminOrReadOnly
@@ -86,8 +87,8 @@ class TokenObtainView(APIView):
             username=serializer.validated_data['username']
         )
         if default_token_generator.check_token(
-            user,
-            serializer.validated_data['confirmation_code']
+                user,
+                serializer.validated_data['confirmation_code']
         ):
             access_token = RefreshToken.for_user(user).access_token
             return Response(
