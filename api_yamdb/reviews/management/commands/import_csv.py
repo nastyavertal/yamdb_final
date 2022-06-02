@@ -4,7 +4,6 @@ import os
 from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
-
 from reviews.models import Category, Genre, Review, Title
 
 User = get_user_model()
