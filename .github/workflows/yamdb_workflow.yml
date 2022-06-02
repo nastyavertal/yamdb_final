@@ -21,7 +21,8 @@ jobs:
         pip install -r api_yamdb/requirements.txt
 
     - name: Test with flake8 and django tests
-      run:
+      run: |
+        python -m flake8
         pytest
 
   build_and_push_to_docker_hub:
@@ -75,8 +76,6 @@ jobs:
             sudo docker-compose exec -T web python manage.py migrate --noinput
             docker-compose exec web python manage.py createsuperuser
             sudo docker-compose exec -T web python manage.py collectstatic --no-input
-
-  # дописать команды
 
   send_message:
     runs-on: ubuntu-latest
