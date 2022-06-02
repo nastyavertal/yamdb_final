@@ -14,20 +14,19 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
-
-from api_yamdb.settings import EMAIL_HOST
 from reviews.models import Category, Genre, Review, Title
 
+from api_yamdb.settings import EMAIL_HOST
+
 from .filters import TitleFilter
-from .permissions import (
-    IsAdmin, IsAdminOrReadOnly, IsOwnerModeratorAdminOrReadOnly
-)
-from .serializers import (
-    CategorySerializer, ClassificationSerializer, CommentSerializer,
-    FeedbackSerializer, GenreSerializer, GetConfirmationCodeSerializer,
-    GetTitleSerializer, GetTokenSerializer, PersonalPageSerializer,
-    PostTitleSerializer, ReviewSerializer, UserSerializer
-)
+from .permissions import (IsAdmin, IsAdminOrReadOnly,
+                          IsOwnerModeratorAdminOrReadOnly)
+from .serializers import (CategorySerializer, ClassificationSerializer,
+                          CommentSerializer, FeedbackSerializer,
+                          GenreSerializer, GetConfirmationCodeSerializer,
+                          GetTitleSerializer, GetTokenSerializer,
+                          PersonalPageSerializer, PostTitleSerializer,
+                          ReviewSerializer, UserSerializer)
 
 User = get_user_model()
 
