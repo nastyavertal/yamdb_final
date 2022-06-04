@@ -77,6 +77,12 @@ sudo systemctl stop nginx
 * http://<ваш-id-сервера>/admin
 * http://<ваш-id-сервера>/redoc
 
+Мои адреса:
+* http://51.250.102.213/api/v1/
+* http://51.250.102.213/admin
+* http://51.250.102.213/redoc
+
+
 ##Автор проекта: 
 
 ### Vertal Nastya
