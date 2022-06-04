@@ -62,7 +62,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo netstat -pna | grep 3000
             # для обновления образа
             sudo docker pull nastyavertal/yamdb_final:latest
             sudo docker-compose stop
